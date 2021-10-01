@@ -11,6 +11,7 @@ public class Program {
 	public static void main(String[] args) throws ParseException {
 		// TODO Auto-generated method stub
 
+		System.out.print("Programa de Reservas.");
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -22,25 +23,29 @@ public class Program {
 		Date checkOut = sdf.parse(sc.next());
 
 		Date now = new Date();
-		
+
 		if (checkIn.before(now) || checkOut.before(now)) {
-			System.out.print("Error in reservation: Datas não futuras.");	
-		}
+			System.out.print("Error in reservation: Datas não futuras.");
 		
-		if (!checkOut.after(checkIn)) {
+		} else if (!checkOut.after(checkIn)) {
 			System.out.print("Error in reservation: Check-out must be after Check-in.");
+		
 		} else {
+		
 			Reservation reservation = new Reservation(number, checkIn, checkOut);
+			
 			System.out.print("Reservation ok!.");
 			System.out.print("Confirm and update Reservations:");
-			
+
 			System.out.print("Check IN update: ");
 			checkIn = sdf.parse(sc.next());
 			System.out.print("Check OUT datupdatee: ");
 			checkOut = sdf.parse(sc.next());
+			
 			reservation.updateDates(checkIn, checkOut);
 			System.out.print("Reservation: " + reservation);
-			
+		
 		}
+		
 	}
 }
