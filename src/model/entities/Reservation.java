@@ -40,6 +40,9 @@ public class Reservation {
 		return checkOut;
 	}
 
+	
+	// teste comentario git -- update code 1120
+	
 	public long duration() {
 		
 		// Calculo de diferença do Tempo:
