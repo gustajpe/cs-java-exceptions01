@@ -40,6 +40,9 @@ public class Reservation {
 		return checkOut;
 	}
 
+	
+	// teste comentario git -- update code 1120
+	
 	public long duration() {
 		
 		// Calculo de diferença do Tempo:
@@ -50,9 +53,19 @@ public class Reservation {
 	}
 	
 
-	public void updateDates(Date checkIn, Date checkOut) {
+	public String updateDates(Date checkIn, Date checkOut) {
+		
+		Date now = new Date();
+
+		if (checkIn.before(now) || checkOut.before(now)) {
+			return  "Error in reservation: Datas não futuras.";}
+		
+		if (!checkOut.after(checkIn)) {
+			return  "Error in reservation: Check-out must be after Check-in.";}
+			
 		this.checkOut = checkOut;
 		this.checkIn = checkIn;
+		return null;
 	}
 	
 	
@@ -68,7 +81,4 @@ public class Reservation {
 				+ ", Duration: "
 				+ duration() + " nights.";		}	
 
-	
-	
-	
 }
